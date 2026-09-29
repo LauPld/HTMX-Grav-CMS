@@ -1,0 +1,6 @@
+{% set logo = theme_var(mobile ? 'custom_logo_mobile' : 'custom_logo') %}
+{% set logo_first = (logo is iterable and logo|length > 0) ? logo|first : null %}
+{% set logo_file = logo_first.name|default(null) %}
+<a href="{{ home_url }}" class="navbar-brand" aria-label="{{ site.title }}" title="{{ site.title }}">
+        <img src="{{ url('theme://images/logo/grav-logo.svg') }}" alt="{{ site.title }}" />
+</a>

@@ -1,0 +1,6 @@
+{% if app.request.method == 'GET' %}
+    <div id="search-results">Résultats pour : {{ q }}</div>
+{% else %}
+    <input type="text" name="q" hx-get="/components/trigger_delay" hx-target="#search-results" hx-trigger="keyup changed delay:500ms" aria-label="trigger delay">
+    <div id="search-results"></div>
+{% endif %}

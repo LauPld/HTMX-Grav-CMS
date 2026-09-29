@@ -1,0 +1,40 @@
+home:
+  alias: '/home'
+
+pages:
+  theme: quark2child
+
+cache:
+  enabled: true
+  check:
+    method: file
+
+assets:
+  css_pipeline: false
+  js_pipeline: false
+  enable_asset_timestamp: false
+
+errors:
+  display: true
+  log: true
+
+debugger:
+  enabled: false
+  provider: clockwork
+
+gpm:
+  releases: stable
+  verify_peer: true
+
+updates:
+  safe_upgrade: true
+  safe_upgrade_snapshot_limit: 5
+
+twig:
+  autoescape: false
+
+strict_mode:
+  yaml_compat: true
+  twig2_compat: true
+  blueprint_compat: true
+  twig3_compat: true

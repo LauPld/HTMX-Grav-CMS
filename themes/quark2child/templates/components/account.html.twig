@@ -1,0 +1,12 @@
+{% if app.request.method == 'PATCH' %}
+{% include 'components/patch' %}
+{% elseif app.request.method == 'DELETE' %}
+{% include 'components/delete' %}
+{% else %}
+<button hx-patch="/components/patch" hx-target="body">
+    Patch Your Account
+</button>
+<button hx-delete="/components/delete" hx-target="body">
+    Delete Your Account
+</button>
+{% endif %}

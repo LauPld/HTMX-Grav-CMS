@@ -1,0 +1,7 @@
+title: HTMX & Grav 
+author:
+  name: Joe Bloggs
+  email: 'joe@example.com'
+metadata:
+    description: 'Project build on top of HTMX documentation on Grav. It is an easy to use, yet powerful, open source flat-file CMS'
+

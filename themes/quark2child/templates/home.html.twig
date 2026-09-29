@@ -1,0 +1,68 @@
+{% extends 'partials/base.html.twig' %}
+{% set hero_image_name = page.header.hero_image %}
+
+{% block hero %}
+    {% if hero_image_name %}
+        {% set hero_image = page.media[hero_image_name] %}
+        {% set content %}
+            <h1>{{ page.title }}</h1>
+            {% if page.header.subtitle %}<p class="lead">{{ page.header.subtitle }}</p>{% endif %}
+        {% endset %}
+        {% include 'partials/hero.html.twig' with {id: 'blog-hero'} %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <article class="content-item">
+        {{ page.content|raw }}
+        <h2>AJAX</h2>
+        <p>The core of htmx is a set of attributes that allow you to issue AJAX requests directly from HTML:</p>
+        <h3>hx-put</h3>
+        <pre><code>
+&lt;button hx-put="/components/messages"&gt;
+    Put To Messages
+&lt;/button&gt;
+</code></pre>
+        <p>This tells the browser:<br>
+
+            When a user clicks on this button, issue a PUT request to the URL /messages and load the response into the button</p>
+        {% include 'components/messages.html.twig' %}
+        <hr/>
+        <h3>hx-post</h3>
+        <p> Here is a <code>div</code> that posts to <code>/mouse_entered</code> when a mouse enters it:</p>
+
+        <pre><code>&lt;div hx-post="/components/mouse_entered" hx-trigger="mouseenter"&gt;
+    [Here Mouse, Mouse!]
+&lt;div&gt;</pre></code>
+        {% include 'components/mouse_entered.html.twig' %}
+        <h3>hx-get</h3>
+        <p>You can use these attributes to implement many common UX patterns, such as Active Search</p>
+        <pre>
+            <code>
+  &lt;input type="text" name="q"
+    hx-get="/components/trigger_delay"
+    hx-trigger="keyup changed delay:500ms"
+    hx-target="#search-results"
+    placeholder="Search..."&gt;
+&lt;div id="search-results"&gt;&lt;/div&gt;
+</code>
+        </pre>
+        <p>This input will issue a request 500 milliseconds after a key up event if the input has been changed and inserts the results into the div with the id <code>search-results</code>.</p>
+        {% include 'components/trigger_delay.html.twig' %}
+        <h3>hx-patch</h3>
+        <p>The hx-patch attribute will cause an element to issue a PATCH to the specified URL and swap the HTML into the DOM using a swap strategy:</p>
+
+        <pre><code>&lt;button hx-patch="/components/patch" hx-target="body"&gt;
+  Patch Your Account
+&lt;/button&gt;</code></pre>
+        <p>This example will cause the button to issue a PATCH to /account and swap the returned HTML into the innerHTML of the body.</p>
+        <h3>hx-delete</h3>
+        <p>The hx-delete attribute will cause an element to issue a DELETE to the specified URL and swap the HTML into the DOM using a swap strategy:</p>
+	<pre>
+            <code>
+        &lt;button hx-delete="/components/delete" hx-target="body"&gt;
+        Delete Your Account
+        &lt;/button&gt;</code></pre>
+        <p>This example will cause the button to issue a DELETE to /account and swap the returned HTML into the innerHTML of the body.</p>
+            {% include 'components/account.html.twig' %}
+    </article>
+{% endblock %}
