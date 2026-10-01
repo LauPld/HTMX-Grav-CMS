@@ -12,7 +12,7 @@ class Quark2Child extends Quark2
             'onPageInit' => [['onPageInit', 0]],
         ];
     }
-    
+
     public function onPagesInitialized(): void
     {
         $request = $this->grav['request'];
@@ -27,12 +27,23 @@ class Quark2Child extends Quark2
             return;
         }
 
-        /* if (!in_array($uri->method(), ['GET', 'HEAD'], true)) {
+        /* 
+         * SECURITY: Uncomment the block below for Production.
+         * This ensures that only authenticated users with 'htmx.write' 
+         * permissions can perform modification requests (PUT, POST, PATCH, DELETE).
+         */
+        /* 
+        if (!in_array($uri->method(), ['GET', 'HEAD'], true)) {
             $login = $this->grav['login'] ?? null;
             if (!$login || !$login->isAuthenticated('htmx.write')) {
                 return;
             }
-        } */
+        } 
+        */
+
+        if (isset($_GET['q'])) {
+            $this->grav['twig']->twig_vars['q'] = $_GET['q'];
+        }
 
         $page->routable(true);
     }
