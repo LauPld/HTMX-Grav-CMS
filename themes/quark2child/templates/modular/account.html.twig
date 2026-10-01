@@ -1,0 +1,12 @@
+{% if is_htmx %}
+{% include 'modular/patch' %}
+{% elseif app.request.method == 'DELETE' %}
+{% include 'modular/delete' %}
+{% else %}
+<button hx-patch="/home/_patch" hx-target="body">
+    Patch Your Account
+</button>
+<button hx-delete="/home/_delete" hx-target="body">
+    Delete Your Account
+</button>
+{% endif %}
