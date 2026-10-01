@@ -1,6 +1,6 @@
 {% if is_htmx %}
 {% include 'modular/patch' %}
-{% elseif app.request.method == 'DELETE' %}
+{% elseif is_htmx %}
 {% include 'modular/delete' %}
 {% else %}
 <button hx-patch="/home/_patch" hx-target="body">

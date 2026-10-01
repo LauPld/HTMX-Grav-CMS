@@ -59,8 +59,8 @@
         </pre>
         <p>This input will issue a request 500 milliseconds after a key up event if the input has been changed and inserts the results into the div with the id <code>search-results</code>.</p>
         
-        {% for module in page.collection() if module.slug == '_messages' %}
-            {% include 'modular/messages.html.twig' with {page: module} %}
+        {% for module in page.collection() if module.slug == '_trigger_delay' %}
+            {{ module.content|raw }}
         {% endfor %}
 
         

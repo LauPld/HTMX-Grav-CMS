@@ -1,10 +1,7 @@
-{# On ignore la variable is_htmx du plugin et on demande DIRECTEMENT à la requête #}
-{% set is_htmx = app.request.headers.get('Hx-Request') == 'true' %}
-
 {% if is_htmx %}
-    <strong style="color: #9AEF9A;">Message Updated</strong>
+    {% include 'modular/messages_success' %}
 {% else %}
-    <button hx-put="/home/_messages" class="btn-htmx">
+    <button hx-put="/home/_messages_success" class="btn-htmx">
         Put To Messages
     </button>
 {% endif %}

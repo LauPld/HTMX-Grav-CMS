@@ -1,8 +1,8 @@
-{% if is_htmx %}
+{% if not is_htmx %}
 <div style="padding:1rem"><p><strong class="alert-green">Account Updated!</strong></p>
 <button><a href="/">Go back</a></button></div>
 {% else %}
-<button hx-patch="/home/account/_patch" hx-target="body">
+<button hx-patch="/home/_patch" hx-target="body">
     Patch Your Account
 </button>
 {% endif %}

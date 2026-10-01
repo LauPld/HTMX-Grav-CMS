@@ -1,0 +1,10 @@
+{% if not is_htmx %}
+    <div>
+        <p class="alert-green"><strong>Mouse entered!</strong></p>
+        <p>The hover action triggered a POST request.</p>
+    </div>
+{% else %}
+    <div hx-post="/home/_mouse_success" hx-trigger="mouseenter">
+        [Here Mouse, Mouse!]
+    </div>
+{% endif %}

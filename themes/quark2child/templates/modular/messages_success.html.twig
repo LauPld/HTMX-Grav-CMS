@@ -1,0 +1,9 @@
+{% if not is_htmx %}    
+        <strong style="color: #9AEF9A;">Message Updated</strong>
+    <p>Your message has been processed successfully.</p>
+    <p>Feel free to add more content here.</p>
+  {% else %}
+    <button hx-put="/home/_messages_success" class="btn-htmx">
+        Put To Messages
+    </button>
+{% endif %}

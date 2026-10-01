@@ -1,5 +1,5 @@
-{% if is_htmx %}
-   {% include 'modular/trigger_success' %}
+{% if not is_htmx %}
+    <div id="search-results">Results for : {{ q }}</div>    
 {% else %}
     <input type="text" name="q" hx-get="/home/_trigger_success" hx-target="#search-results" hx-trigger="keyup changed delay:500ms" aria-label="trigger delay">
     <div id="search-results"></div>
